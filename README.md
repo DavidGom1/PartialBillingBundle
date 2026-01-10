@@ -16,7 +16,7 @@ A Kimai plugin that adds a "Simple Accounting" layer to your projects. It allows
 1. Clone this repository into your Kimai plugins directory:
    ```bash
    cd /opt/kimai/var/plugins
-   git clone https://github.com/DavidGom1/PartialBillingBundle.git SimpleAccountingBundle
+   git clone https://github.com/DavidGom1/SimpleAccountingBundle.git SimpleAccountingBundle
    ```
 
 2. Clear the cache:
