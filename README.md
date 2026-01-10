@@ -25,7 +25,13 @@ A Kimai plugin that adds a "Simple Accounting" layer to your projects. It allows
    bin/console kimai:reload
    ```
 
-3. The plugin should now be visible in the "System > Plugins" menu and a new "Simple Accounting" menu item will appear.
+3. Run the installation command
+   ```bash
+   cd /opt/kimai
+   bin/console kimai:bundle:simple-accounting:install
+   ```
+
+4. The plugin should now be visible in the "System > Plugins" menu and a new "Simple Accounting" menu item will appear.
 
 ## Usage
 
