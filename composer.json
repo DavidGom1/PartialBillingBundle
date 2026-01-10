@@ -1,7 +1,7 @@
 {
     "name": "kimai-plugin/simple-accounting-bundle",
     "description": "A Kimai plugin for simple accounting",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "type": "kimai-plugin",
     "license": "MIT",
     "authors": [
