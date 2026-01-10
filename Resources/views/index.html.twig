@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'partial_billing.index.title'|trans }}{% endblock %}
+
+{% block main %}
+    <div class="page-header d-print-none">
+        <div class="row align-items-center">
+            <div class="col">
+                <h2 class="page-title">{{ 'partial_billing.index.page_title'|trans }}</h2>
+                <div class="text-muted mt-1">{{ 'partial_billing.index.subtitle'|trans }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 mt-3">
+        <div class="card">
+            <div class="list-group list-group-flush">
+                {% for project in projects %}
+                    <a href="{{ path('simple_accounting_project_details', {'id': project.id}) }}" class="list-group-item list-group-item-action">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <span class="avatar text-white" style="background-color: {{ project.color ?: '#a0a0a0' }}">
+                                    {{ project.name|slice(0, 2)|upper }}
+                                </span>
+                            </div>
+                            <div class="col text-truncate">
+                                <div class="d-block text-reset font-weight-bold">{{ project.name }}</div>
+                                <div class="d-block text-muted text-truncate mt-n1">
+                                    {{ project.customer.name }}
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-chevron-right text-muted"></i>
+                            </div>
+                        </div>
+                    </a>
+                {% else %}
+                    <div class="list-group-item text-center p-5">
+                        <div class="empty-icon"><i class="fas fa-folder-open"></i></div>
+                        <p class="empty-title">{{ 'partial_billing.index.empty.title'|trans }}</p>
+                        <p class="empty-subtitle text-muted">{{ 'partial_billing.index.empty.subtitle'|trans }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

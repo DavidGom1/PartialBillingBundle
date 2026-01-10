@@ -1,0 +1,35 @@
+partial_billing.index.title: Panel de Proyectos
+partial_billing.index.page_title: Proyectos Contables
+partial_billing.index.subtitle: Selecciona un proyecto para gestionar su facturación simple
+partial_billing.index.empty.title: No hay proyectos visibles
+partial_billing.index.empty.subtitle: Asegúrate de tener permisos para ver proyectos.
+partial_billing.view.title: Detalle Proyecto - %name%
+partial_billing.view.card_title: 'Estado Contable: %name%'
+partial_billing.action.back: Volver
+partial_billing.stats.accumulated: Acumulado (Trabajado)
+partial_billing.stats.invoiced: Facturado (Kimai)
+partial_billing.stats.simple_payments: Pagos Simples
+partial_billing.stats.real_remaining: Restante Real
+partial_billing.entries.title: Apuntes Simples (Pagos Extra)
+partial_billing.action.new_entry: Nuevo Apunte
+partial_billing.label.date: Fecha
+partial_billing.label.amount: Cantidad
+partial_billing.label.comment: Comentario
+partial_billing.label.actions: Acciones
+partial_billing.action.edit: Editar
+partial_billing.action.delete: Borrar
+partial_billing.confirm.delete: ¿Seguro que quieres borrar este apunte?
+partial_billing.modal.edit.title: Editar Apunte
+partial_billing.action.cancel: Cancelar
+partial_billing.action.save: Guardar Cambios
+partial_billing.entries.empty: No hay apuntes creados para este proyecto.
+partial_billing.modal.create.title: Nuevo Apunte Simple
+partial_billing.help.negative_amount: Usa cantidades negativas para devoluciones si es necesario.
+partial_billing.action.create: Crear Apunte
+partial_billing.error.project_not_found: Proyecto no encontrado
+partial_billing.flash.entry_updated: Apunte actualizado.
+partial_billing.flash.entry_created: Apunte creado.
+partial_billing.error.calculation: "Error al calcular totales: %error%"
+partial_billing.flash.entry_deleted: Apunte eliminado.
+menu.simple_accounting: Contabilidad Simple
+menu.create_simple_invoice: Panel Contable

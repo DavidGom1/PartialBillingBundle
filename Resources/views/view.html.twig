@@ -1,0 +1,172 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'partial_billing.view.title'|trans({'%name%': project.name}) }}{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                     <h3 class="card-title">{{ 'partial_billing.view.card_title'|trans({'%name%': project.name}) }}</h3>
+                     <div class="card-actions">
+                         <a href="{{ path('simple_accounting_index') }}" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-arrow-left"></i> {{ 'partial_billing.action.back'|trans }}
+                         </a>
+                     </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="card-body text-center bg-dark rounded">
+                                <div class="text-secondary">{{ 'partial_billing.stats.accumulated'|trans }}</div>
+                                <div class="h3 m-0">{{ stats.accumulated|number_format(2) }} €</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="card-body text-center bg-dark rounded">
+                                <div class="text-secondary">{{ 'partial_billing.stats.invoiced'|trans }}</div>
+                                <div class="h3 m-0 text-success">{{ stats.invoiced|number_format(2) }} €</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="card-body text-center bg-dark text-white rounded">
+                                <div class="text-secondary">{{ 'partial_billing.stats.simple_payments'|trans }}</div>
+                                <div class="h3 m-0 text-warning">{{ stats.simple_entries|number_format(2) }} €</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="card-body text-center bg-dark text-white rounded">
+                                <div class="text-white-50">{{ 'partial_billing.stats.real_remaining'|trans }}</div>
+                                <div class="h3 m-0">{{ stats.final_remaining|number_format(2) }} €</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">{{ 'partial_billing.entries.title'|trans }}</h3>
+                    <div class="card-actions">
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreateEntry">
+                            <i class="fas fa-plus"></i> {{ 'partial_billing.action.new_entry'|trans }}
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-vcenter card-table">
+                        <thead>
+                            <tr>
+                                <th>{{ 'partial_billing.label.date'|trans }}</th>
+                                <th>{{ 'partial_billing.label.amount'|trans }}</th>
+                                <th>{{ 'partial_billing.label.comment'|trans }}</th>
+                                <th class="w-1">{{ 'partial_billing.label.actions'|trans }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entry in entries %}
+                                <tr>
+                                    <td>{{ entry.createdAt|date('d/m/Y H:i') }}</td>
+                                    <td>{{ entry.amount|number_format(2) }} €</td>
+                                    <td>{{ entry.comment|nl2br }}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-secondary" 
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#modalEditEntry{{ entry.id }}"
+                                                title="{{ 'partial_billing.action.edit'|trans }}">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <a href="{{ path('simple_accounting_entry_delete', {'id': entry.id}) }}" 
+                                               class="btn btn-sm btn-danger" 
+                                               onclick="return confirm('{{ 'partial_billing.confirm.delete'|trans }}')"
+                                               title="{{ 'partial_billing.action.delete'|trans }}">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+
+                                        <!-- Edit Modal -->
+                                        <div class="modal fade" id="modalEditEntry{{ entry.id }}" tabindex="-1" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form method="post">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">{{ 'partial_billing.modal.edit.title'|trans }}</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <input type="hidden" name="entry_id" value="{{ entry.id }}">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">{{ 'partial_billing.label.date'|trans }}</label>
+                                                                <input type="datetime-local" name="date" class="form-control" value="{{ entry.createdAt|date('Y-m-d\\TH:i') }}" required>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label">{{ 'partial_billing.label.amount'|trans }}</label>
+                                                                <input type="number" step="0.01" name="amount" class="form-control" value="{{ entry.amount }}" required>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label">{{ 'partial_billing.label.comment'|trans }}</label>
+                                                                <textarea name="comment" class="form-control">{{ entry.comment }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'partial_billing.action.cancel'|trans }}</button>
+                                                            <button type="submit" class="btn btn-primary">{{ 'partial_billing.action.save'|trans }}</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted p-3">{{ 'partial_billing.entries.empty'|trans }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Modal -->
+    <div class="modal fade" id="modalCreateEntry" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ 'partial_billing.modal.create.title'|trans }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="project_id" value="{{ project.id }}">
+                        <div class="mb-3">
+                            <label class="form-label">{{ 'partial_billing.label.date'|trans }}</label>
+                            <input type="datetime-local" name="date" class="form-control" value="{{ "now"|date("Y-m-d\\TH:i") }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">{{ 'partial_billing.label.amount'|trans }}</label>
+                            <input type="number" step="0.01" name="amount" class="form-control" required>
+                            <div class="form-text">{{ 'partial_billing.help.negative_amount'|trans }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">{{ 'partial_billing.label.comment'|trans }}</label>
+                            <textarea name="comment" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'partial_billing.action.cancel'|trans }}</button>
+                        <button type="submit" class="btn btn-primary">{{ 'partial_billing.action.create'|trans }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

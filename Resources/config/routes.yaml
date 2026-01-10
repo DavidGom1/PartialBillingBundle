@@ -1,0 +1,6 @@
+simple_accounting:
+    resource: '../../Controller'
+    type: attribute
+    prefix: '/{_locale}'
+    requirements:
+        _locale: 'en|de|fr|es|it|ru|pt_BR|tr|he|sv|nl|pl|zh_CN|ko|hu|cs|ro|vi|ar|eu|jb|da|sk|tr'

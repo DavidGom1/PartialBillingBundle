@@ -1,0 +1,35 @@
+partial_billing.index.title: Project Dashboard
+partial_billing.index.page_title: Accounting Projects
+partial_billing.index.subtitle: Select a project to manage its partial billing
+partial_billing.index.empty.title: No projects visible
+partial_billing.index.empty.subtitle: Ensure you have permission to view projects.
+partial_billing.view.title: Project Detail - %name%
+partial_billing.view.card_title: 'Accounting Status: %name%'
+partial_billing.action.back: Back
+partial_billing.stats.accumulated: Accumulated (Worked)
+partial_billing.stats.invoiced: Invoiced (Kimai)
+partial_billing.stats.simple_payments: Simple Payments
+partial_billing.stats.real_remaining: Real Remaining
+partial_billing.entries.title: Simple Entries (Extra Payments)
+partial_billing.action.new_entry: New Entry
+partial_billing.label.date: Date
+partial_billing.label.amount: Amount
+partial_billing.label.comment: Comment
+partial_billing.label.actions: Actions
+partial_billing.action.edit: Edit
+partial_billing.action.delete: Delete
+partial_billing.confirm.delete: Are you sure you want to delete this entry?
+partial_billing.modal.edit.title: Edit Entry
+partial_billing.action.cancel: Cancel
+partial_billing.action.save: Save Changes
+partial_billing.entries.empty: No entries created for this project.
+partial_billing.modal.create.title: New Simple Entry
+partial_billing.help.negative_amount: Use negative amounts for refunds if necessary.
+partial_billing.action.create: Create Entry
+partial_billing.error.project_not_found: Project not found
+partial_billing.flash.entry_updated: Entry updated.
+partial_billing.flash.entry_created: Entry created.
+partial_billing.error.calculation: "Error calculating totals: %error%"
+partial_billing.flash.entry_deleted: Entry deleted.
+menu.simple_accounting: Simple Accounting
+menu.create_simple_invoice: Accounting Dashboard

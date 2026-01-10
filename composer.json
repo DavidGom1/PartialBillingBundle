@@ -1,0 +1,34 @@
+{
+    "name": "kimai-plugin/simple-accounting-bundle",
+    "description": "A Kimai plugin for simple accounting (partial billing)",
+    "version": "1.0.0",
+    "type": "kimai-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Gómez",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/DavidGom1/PartialBillingBundle",
+    "keywords": [
+        "kimai",
+        "plugin",
+        "billing",
+        "accounting"
+    ],
+    "require": {
+        "kimai/kimai": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "KimaiPlugin\\SimpleAccountingBundle\\": ""
+        }
+    },
+    "extra": {
+        "kimai": {
+            "require": 20000,
+            "name": "SimpleAccountingBundle"
+        }
+    }
+}
