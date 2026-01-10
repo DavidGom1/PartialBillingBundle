@@ -1,0 +1,14 @@
+# --------------------------------------------------------------------------------------------------
+# Generate a new migration with:
+# bin/console doctrine:migrations:diff --em=default --configuration=var/plugins/SimpleAccountingBundle/Migrations/doctrine_migrations.yaml
+#
+# Execute all migrations with:
+# bin/console kimai:bundle:shared-project-timesheets:install
+# bin/console doctrine:migrations:migrate --em=default --configuration=var/plugins/SimpleAccountingBundle/Migrations/doctrine_migrations.yaml
+# --------------------------------------------------------------------------------------------------
+
+table_storage:
+  table_name: 'bundle_migration_simple_accounting'
+migrations_paths:
+  KimaiPlugin\SimpleAccountingBundle\Migrations: 'var/plugins/SimpleAccountingBundle/Migrations'
+custom_template: 'migrations/MigrationTemplate.txt'

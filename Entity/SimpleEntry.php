@@ -4,9 +4,10 @@ namespace KimaiPlugin\SimpleAccountingBundle\Entity;
 
 use App\Entity\Project;
 use Doctrine\ORM\Mapping as ORM;
+use KimaiPlugin\SimpleAccountingBundle\Repository\SimpleEntryRepository;
 
 #[ORM\Table(name: 'kimai2_partial_billing_entry')]
-#[ORM\Entity(repositoryClass: 'KimaiPlugin\SimpleAccountingBundle\Repository\SimpleEntryRepository')]
+#[ORM\Entity(repositoryClass: SimpleEntryRepository::class)]
 class SimpleEntry
 {
     #[ORM\Id]
